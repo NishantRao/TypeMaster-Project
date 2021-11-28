@@ -79,11 +79,15 @@ router.post("/register",async(req,res) =>{
 // ************************************ Speed TEst
 
 router.get("/SpeedTest",auth,(req,res) =>{
-    res.render("SpeedTest",{user : req.user})
+    res.render("SpeedTest")
 });
 
 router.get("/Aboutus",(req,res) =>{
     res.render("AboutUs")
+})
+
+router.get("/profile",auth ,(req,res) =>{
+    res.render("Profile");
 })
 
 module.exports= router;

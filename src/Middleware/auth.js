@@ -9,7 +9,7 @@ const auth = async(req,res,next) =>{
         res.locals.User = user;
         next();
     }catch(err){
-        console.log(err);
+        res.render("Login_Page")
     }
 }
 module.exports = auth ;

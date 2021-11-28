@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" href="#"> <strong>TypeMaster</strong></a>
+  <header><h5><strong>TypeMaster</strong></h5></header>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,6 +14,9 @@
         </ul>
       <ul class="navbar-nav">
             {{#if User.Username }}
+                  <li class="nav-item">
+                      <img src="https://media.istockphoto.com/vectors/male-profile-flat-blue-simple-icon-with-long-shadow-vector-id522855255?k=20&m=522855255&s=612x612&w=0&h=fLLvwEbgOmSzk1_jQ0MgDATEVcVOh_kqEe0rqi7aM5A=" alt=""  width="50px" height="50px"
+                  </li>
                   <li class="nav-item">
                     <a class="nav-item nav-link" href="/profile"><strong>{{User.Username}}</strong></a>
                   </li>
