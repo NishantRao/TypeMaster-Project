@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <a class="navbar-brand" href="#"> <strong>TypeMaster</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="/SpeedTest"> <strong>SpeedTest</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="/Aboutus"> <strong>Aboutus</strong></a>
+            </li>
+        </ul>
+      <ul class="navbar-nav">
+            {{#if User.Username }}
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="/profile"><strong>{{User.Username}}</strong></a>
+                  </li>
+              {{else}}
+                 <li class="nav-item">
+                  <a class="nav-item nav-link" href="/"><strong>Login</strong></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-item nav-link" href="/register"> <strong>Register</strong></a>
+                </li>
+              {{/if}}
+        </ul>
+    </div>
+</nav>
+

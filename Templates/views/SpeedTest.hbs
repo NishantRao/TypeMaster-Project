@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeMaster</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        *{padding: 0%;margin: 0%; box-sizing: border-box;}
+        .maindiv{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-image: url(https://images.pexels.com/photos/1375261/pexels-photo-1375261.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+            text-align: center;
+        }
+        .centerdiv{
+            color:greenyellow;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <div class="maindiv" >
+        <div class="centerdiv">
+            <h2>Welcome To Typing Speed Test</h2>
+            <br>
+            <br>
+            <h3 id="msg"></h3>
+            <br>
+            <textarea id="mywords" cols="100" rows="10" placeholder="Hello guyzz please click on start to start test "></textarea>
+            <br>
+            <button id = "btn" class="mybtn"> Start</button>
+
+        </div>
+
+    </div>
+<script>
+    const arr =["Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "Iure eos quas mollitia quasi expedita inventore ipsa quis pariatur.",
+    " Eius, qui accusantium. Illum, illo sint consectetur natus voluptatibus minus ipsa! Voluptas?"
+    ]
+
+    const playgame =() =>{
+        let randomnumber = Math.floor(Math.random()*arr.length);
+        msg.innerText= arr[randomnumber];
+        let date = new Date();
+        starttime  = date.getTime();
+        btn.innerText = "Done";
+    }
+
+    const endPlay = () =>{
+        let date = new Date();
+        endtime = date.getTime();
+        let tottime = ((endtime-starttime)/1000);
+        console.log(tottime);
+        let written = typed.value;
+        let wordCount = wordCounter(written,tottime);
+    }
+
+    const wordCounter = (str,tottime) =>{
+        let allwords = str.split(" ");
+        let original = msg.innerText.split(" ");
+        let count =0
+        for (let i=0 ;i<(Math.min(original.length,allwords.length));i++ ){
+            if (allwords[i]=== original[i]){
+                count++;
+            }
+        }
+        msg.innerText = ` You typed ${count} words correctly out of ${original.length} in ${tottime} seconds `
+        typed.value ="";
+    }
+
+    const msg = document.getElementById("msg");
+    const typed = document.getElementById("mywords");
+    const btn = document.getElementById("btn");
+    let starttime ,endtime,tottime ;
+    typed.disabled = true;
+    btn.addEventListener('click',function(){
+        if(this.innerText =="Start"){
+            typed.disabled = false;
+            playgame();
+        }else if(this.innerText == "Done"){
+            typed.disabled = true;
+            btn.innerText ="Start";
+            endPlay();
+        }
+    })
+</script>
+</body>
+</html>
